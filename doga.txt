@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+if [ $# -eq 0 ]; then
+	echo "kell mapppa is" 
+	exit 1
+fi
+mappa=$1
+if [ -d "$mappa" ]; then
+	echo "már van ilyen"
+	rm -r "$mappa"
+fi
+mkdir $mappa
+echo "mappa megcsinálva"
+echo "adj meg egz syámot 1 és 1í köyött"
+read syam
+while [ $syam -lt 1 ] || [ $syam -gt 10 ];
+do
+	echo "rossy syam"
+	read syam
+done
+for ((i=1;syam=>i;i++))
+do
+	touch "$mappa/user$i"
+	echo "csináltam: user$i"
+done
+chmod 700 $mappa
+echo "csak te férsy hoyyá"
+echo "késy."
